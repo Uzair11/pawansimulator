@@ -1,0 +1,31 @@
+
+<div>
+  <form [formGroup]="placeCommandForm"  novalidate>
+  <ion-item>
+    <ion-label position="floating">Row</ion-label>
+    <ion-input formControlName="xValue" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Col</ion-label>
+    <ion-input formControlName="yValue" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Direction</ion-label>
+    <ion-select formControlName="direction" placeholder="Select One">
+      <ion-select-option value=1>North</ion-select-option>
+      <ion-select-option value=2>East</ion-select-option>
+      <ion-select-option value=3>South</ion-select-option>
+      <ion-select-option value=4>West</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pawn Type</ion-label>
+    <ion-select formControlName="pawnType" placeholder="Select One">
+      <ion-select-option value=1>White</ion-select-option>
+      <ion-select-option value=2>Black</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button color="primary" type="submit" [disabled]="!placeCommandForm.valid" (click)="executeCommand()">Execute</ion-button>
+  </form>
+  
+</div>

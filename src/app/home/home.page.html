@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid *ngIf="showBoard">
+    <ion-row *ngFor="let chessRow of chessPawnBoardObj; let r = index;">
+
+      <ion-col
+        [ngClass]="{'white-box':calcBoxColor(r,c),'black-box':calcBoxColor(r,c), 'goto-box': checkSteps(r,c)} "
+        *ngFor="let chessCol of chessRow; let c = index;">
+        <img src="{{getImageOnIndex(chessCol, r, c)}}" alt="no-img"
+          (error)="errorHandler($event, r ,c)">
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <app-place-command (executePlaceCommand)="executePlaceCommand($event)" *ngIf="showPlaceCommand"></app-place-command>
+ 
+  <ion-button color="primary"  (click)="placePawn()">Place</ion-button>
+  <ion-button color="primary"  (click)="movePawn()">Move</ion-button>
+  <ion-button color="primary" (click)="leftRotatePawn()" >Left</ion-button>
+  <ion-button color="primary" (click)="rightRotatePawn()" >Right</ion-button>
+  <ion-button color="primary" (click)="reportPawn()">Report</ion-button>
+  <ion-text color="secondary">
+    <h3>{{reportText}}</h3>
+  </ion-text>
+</ion-content>
